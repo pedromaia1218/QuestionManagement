@@ -28,7 +28,7 @@ pip install flask-sqlalchemy
 
 ### Executando
 
-* Execute o arquivo main.py que retornará o servidor aberto (como indica abaixo) e cole o link http onde estará rodando o projeto.
+* Execute o arquivo main.py, que abrirá o servidor (como indica abaixo), e cole o link http no navegador (como indica na 6ª linha abaixo).
 ```
 * Serving Flask app 'website' (lazy loading)
  * Environment: production
