@@ -47,10 +47,11 @@ Alguns problemas comuns ocorrem quando não se tem o python rodando corretamente
 
 ## Autores
 
-[Pedro Henrique]
+Pedro Henrique
 (https://github.com/pedromaia1218)
 
 Davi Freire
+(https://github.com/Dvfreii)
 
 
 ## Histórico de versões
