@@ -1,7 +1,7 @@
 # QuestionManagement
 Um simples projeto de gerenciamento de perguntas, para inserção de perguntas e respostas, facilitando o treinamento de um chatbot (ainda decidindo) Rasa, botpress.. etc.
 
-## Description
+## Descrição
 
 O projeto conta com uma página de login, necessária autenticação para uso (maior segurança). Uma página para cadastro de usuários, e uma página para o cadastro de 
 perguntas e respostas. Um usuário administrador, para controlar as perguntas e respostas, validando as que estiverem boas o suficientes para serem inseridas no 
@@ -9,55 +9,53 @@ treinamento, e usuários comuns que fazem a inserção dessas perguntas e respos
 
 ## Getting Started
 
-### Dependencies
+### Dependencias
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Python 3.6 ou acima.
+* flask
+* flask-login
+* flask-sqlalchemy
+* PostgreSQL, MySQL ou SQLite (decidindo)
 
-### Installing
+### Instalação
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
+* Basta baixar o projeto, instalar as dependências (Python, Flask .. etc) que o ambiente estará preparado.
 ```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
+pip install flask
+pip install flask-login
+pip install flask-sqlalchemy
 ```
 
-## Authors
+### Executando
 
-Contributors names and contact info
+* Execute o arquivo main.py que retornará o servidor aberto (como indica abaixo) e cole o link http onde estará rodando o projeto.
+```
+* Serving Flask app 'website' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 504-658-042
+```
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+## Ajuda
 
-## Version History
+Alguns problemas comuns ocorrem quando não se tem o python rodando corretamente, problemas com path.
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+## Autores
+
+Pedro Henrique
+https://github.com/pedromaia1218
+
+Davi Freire
+
+
+## Histórico de versões
+
 * 0.1
-    * Initial Release
+    * Esqueleto básico do projeto.
 
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+## Referências
