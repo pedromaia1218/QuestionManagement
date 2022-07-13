@@ -1,4 +1,63 @@
-{% extends "base.html" %} {% block title %}Cadastro{% endblock %} 
-{% block content %}
-<h1>Cadastro de usuários</h1>
+{% extends "base.html" %} {% block title %}Cadastro{% endblock %} {% block
+content %}
+<form method="POST">
+  <h3 align="center">Cadastrar</h3>
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nome"
+      name="nome"
+      placeholder="Coloque aqui seu nome"
+    />
+    <label for="senha">Senha</label>
+    <input
+      type="password"
+      class="form-control"
+      id="senha"
+      name="senha"
+      placeholder="Coloque aqui sua senha"
+    />
+    <label for="setor">Setor</label>
+    <input
+      type="text"
+      class="form-control"
+      id="setor"
+      name="setor"
+      placeholder="Coloque aqui o setor"
+    />
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Coloque aqui seu email"
+    />
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="userType"
+        id="comum"
+        checked
+      />
+      <label class="form-check-label" for="comum">
+        Comum
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="userType"
+        id="admin"
+      />
+      <label class="form-check-label" for="admin">
+        Admin
+      </label>
+    </div>
+  </div>
+</form>
 {% endblock %}
