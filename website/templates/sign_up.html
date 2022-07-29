@@ -26,8 +26,8 @@ content %}
       name="setor"
       aria-label="Default select example"
     >
-      {% for id in sector %}
-      <option value="{{ Sector.id }}">{{ sector.id }}</option>
+      {% for e in sector %}
+      <option value="{{e.id}}">{{ e.nome }}</option>
       {% endfor %}
     </select>
 

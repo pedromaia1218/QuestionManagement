@@ -37,18 +37,18 @@ def sign_up():
         email = request.form.get('email')
         nome = request.form.get('nome')
         senha = request.form.get('senha')
-        setor = request.form.get('setor')
+        sector_id = request.form.get('setor')
         userType = request.form.get('userType')
 
         user = User.query.filter_by(email=email).first()
-        sector = Sector.query.all()
+        
 
         if user:
             flash('Email já cadastrado!', category='error')
         elif len(nome) < 3:
             flash('Nome precisa ser maior que 2 caracteres.', category='error')
         else:
-            new_user = User(email=email, nome=nome, senha=senha, userType=userType)
+            new_user = User(email=email, nome=nome, senha=senha, sector_id=sector_id, userType=userType)
             db.session.add(new_user)
             db.session.commit()
 
@@ -56,7 +56,8 @@ def sign_up():
             return redirect(url_for('views.home'))
 
     if(current_user.userType == 'admin'):
-        return render_template("sign_up.html", user=current_user)
+        sector = Sector.query.all()
+        return render_template("sign_up.html", user=current_user, sector=sector)
     else:
         flash('Não permitido.', category='error')
         return redirect(url_for('views.home'))
