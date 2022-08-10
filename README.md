@@ -56,6 +56,11 @@ Davi Freire
 
 ## Histórico de versões
 
+* 0.2
+    * Autenticação.
+    * Cadastro de novos usuários (somente por um administrador).
+    * Cadastro de QnA para o banco de dados (perguntas e respostas).
+    * Visualizar todas as QnAs do seu setor.
 * 0.1
     * Esqueleto básico do projeto.
 
