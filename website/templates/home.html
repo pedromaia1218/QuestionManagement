@@ -1,4 +1,91 @@
-{% extends "base.html" %} {% block title %}Homepage{% endblock %} 
-{% block content %}
-<h1>Página principal</h1>
+{% extends "base.html" %} {% block title %}Homepage{% endblock %} {% block
+content %}
+<br/>
+
+<h2>Qnas</h2>
+<ul class="list-group list-group-flush">
+  {% for e in qnas %} {% if e.sector_id == current_user.sector_id %}
+  <li class="list-group-item">
+    <p>
+        {{e.id}}
+    </p>
+    <p>
+        <h5>Perguntas:</h5>
+        {% for t in questions %}
+        {% if t.qnas_id == e.id%}
+        {{ t.question }};
+        {% endif %}
+        {% endfor %}
+    </p>
+    <p>
+        <h5>Resposta:</h5>
+        
+        {% for t in answers %}
+        {% if t.qnas_id == e.id%}
+        {{ t.answer }}
+        {% endif %}
+        {% endfor %}
+    </p>
+    <p>
+      <h5>Contexto:</h5>
+      
+      {% for t in contexts %}
+      {% if t.qnas_id == e.id%}
+      {{ t.context }};
+      {% endif %}
+      {% endfor %}
+  </p>
+  </li>
+  {% endif %} {% endfor %}
+</ul>
+<br />
+
+<h4>Adicionar nova QnA</h4>
+<br />
+<form method="POST">
+  <label for="answer">Resposta</label>
+  <input
+    class="form-control"
+    type="text"
+    name="answer"
+    id="answer"
+    placeholder="Coloque aqui a resposta"
+  />
+  <div class="input-wrapper">
+    <label for="question">Pergunta</label>
+    <input
+      class="form-control"
+      type="text"
+      name="question"
+      id="question"
+      placeholder="Coloque aqui a pergunta"
+    />
+    <a
+      href="javascript:void(0);"
+      class="add-input"
+      title="Adicionar nova pergunta"
+      ><h5><i class="bi bi-plus-square-fill"></i></h5
+    ></a>
+  </div>
+
+  <div class="context-wrapper">
+    <label for="context">Contexto</label>
+    <input
+      class="form-control"
+      type="text"
+      name="context"
+      id="context"
+      placeholder="Coloque aqui o contexto"
+    />
+    <a
+      href="javascript:void(0);"
+      class="add-context"
+      title="Adicionar novo contexto"
+      ><h5><i class="bi bi-plus-square-fill"></i></h5
+    ></a>
+  </div>
+
+  <br />
+  <button type="submit" class="btn btn-primary">Adicionar</button>
+</form>
 {% endblock %}
