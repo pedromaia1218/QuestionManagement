@@ -24,6 +24,10 @@ treinamento, e usuários comuns que fazem a inserção dessas perguntas e respos
 pip install flask
 pip install flask-login
 pip install flask-sqlalchemy
+pip install bs4
+pip install requests
+pip install flask-restful
+pip install flask-ngrok
 ```
 
 ### Executando
