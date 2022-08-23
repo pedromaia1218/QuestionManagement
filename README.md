@@ -56,6 +56,9 @@ Davi Freire
 
 ## Histórico de versões
 
+* 0.3
+    * Exportação de JSON
+    * Contexto agora obrigatório (pelo menos um)
 * 0.2
     * Autenticação.
     * Cadastro de novos usuários (somente por um administrador).
