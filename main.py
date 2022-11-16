@@ -43,9 +43,9 @@ def cardapio_do_dia():
     desjejum_list= junta_palavras([i.text for i in desjejum('span')])
     almoco_list = junta_palavras([i.text for i in almoco('span')]) 
     jantar_list = junta_palavras([i.text for i in jantar('span')]) 
-    cardapio_json["restaurante_menu"].append({"Desjejum": json.dumps((desjejum_list),ensure_ascii=False)})
-    cardapio_json["restaurante_menu"].append({"Almoco":  json.dumps(almoco_list,ensure_ascii=False)})
-    cardapio_json["restaurante_menu"].append({"Jantar": json.dumps((jantar_list),ensure_ascii=False)})
+    cardapio_json["restaurante_menu"].append({"Desjejum": json.dumps((desjejum_list),ensure_ascii=False).replace('"',"")})
+    cardapio_json["restaurante_menu"].append({"Almoco":  json.dumps(almoco_list,ensure_ascii=False).replace('"',"")})
+    cardapio_json["restaurante_menu"].append({"Jantar": json.dumps((jantar_list),ensure_ascii=False).replace('"',"")})
     return json.dumps(cardapio_json,ensure_ascii = False)
 
 def cardapio_quixada():
@@ -531,6 +531,82 @@ class get_contatos(Resource):
         return contatos_prae
 
 api.add_resource(get_contatos,"/get_contatos/<string:setor>")
+
+def struture_location(setor,lat,log,address,title,desc,link_maps):
+              location = {"location": 
+              [{"setor": setor },
+              {"latitude": "{0}".format(lat)},
+              {"longitude": "{0}".format(log)},
+              {"address": address},
+              {"title": title},
+              {"desc": desc},
+              {"maps": link_maps}]}
+              return location
+
+# Prointer
+desc_prointer = "Em frente a livraria Arte e Ciência" # descrição de onde fica a prointer
+loc_prointer = struture_location("Prointer",
+                  -3.741827464215639, 
+                  -38.53896668465892,
+                  "Av. da Universidade, 2853 - Benfica - 60020-181 - Fortaleza – CE – Brasil",
+                  "Prédio da Reitoria, Altos",
+                  desc_prointer,
+                  "https://goo.gl/maps/eLkVVHmRSNwcfnqm9")
+
+# Instituto Confúcio 
+
+desc_confucio = "Ao lado da praça Prisco Bezerra, em frente ao FG automóveis" 
+loc_confucio = struture_location("Prointer",
+                  -3.7394130073747687, -38.56946437265177,
+                  "Rua Dr. Abdenago Rocha Lima, s/n - Campus do Pici, Fortaleza - CE, 60440-554",
+                  "Instituto Confúcio",
+                  desc_confucio,
+                  "https://goo.gl/maps/vrmHuB9eKkbrtXxv8")
+
+# Prae
+desc_prae = "Ao lado da igreja Igreja de Nossa Senhora dos Remédio,em frente ao Branco do Brasil"
+loc_prae = struture_location("Prae",
+                  -3.741597800417145,
+                  -38.53828905915975,
+                  "Av. da Universidade, 2853 - Benfica",
+                  "Edifício",
+                  desc_prae,
+                  "https://goo.gl/maps/2aiPH34CiDZRGfgt7")
+# COORDENADORIA  DE ATIVIDADES DESPORTIVAS
+desc_esportiva = "Quadra do CEU ao lado do Bloco de Psicologia"
+loc_esportiva = struture_location("Prae",
+                  -3.7399934596046998,
+                  -38.53890611868392,
+                  "Av. da Universidade, 2762 - Centro, Fortaleza - CE, 60020-181",
+                  "Coordenadoria de atividade desportivas ",
+                  desc_esportiva,
+                  "https://goo.gl/maps/3tM7RX9oTqUTgUiz6")
+
+desc_prograd = "A frente da Biblioteca Central existe uma escada que leva abaixo da mesma,siga por ela para chegar atrás da bibioteca,ali você encontrará encontrará a Prograd ao lado do Banco do Brasil."
+loc_prograd = struture_location("Prograd",
+                  -3.7425018781683863,
+                  -38.574071941963766,
+                  "Campus do Pici - Pici, Fortaleza - CE, 60455-760",
+                  "Rua Biblioteca Central",
+                  desc_prograd,
+                  "https://goo.gl/maps/Ah1rngrEGWFRsEZcA")
+
+localizacao_prograd = [loc_prograd]
+localizacao_prointer = [loc_prointer,loc_confucio]
+localizacao_prae = [loc_prae,loc_esportiva]
+
+# Rota GET...get_location/<setor:location>
+class get_location(Resource):
+    def get(self,loc):
+      self.loc = loc
+      if self.loc == 'prograd':
+        return localizacao_prograd
+      elif self.loc == 'prointer':
+        return localizacao_prointer
+      elif self.loc == 'prae':
+        return localizacao_prae
+
+api.add_resource(get_location,"/get_location/<string:loc>")
 
 if __name__ == '__main__':
     app.run(debug=True)
